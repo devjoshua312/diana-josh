@@ -5,7 +5,7 @@ import os
 client_api = os.environ.get["CLIENT_API_KEY"]
 
 def authCheck(key):
-	if key == client_api:
+	if key in client_api:
 		return("ok")
 
 app = Flask(__name__)
