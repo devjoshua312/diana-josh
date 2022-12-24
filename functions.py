@@ -1,9 +1,10 @@
 import openai
 import random
+import config
 import pyshorteners as sh
 
 
-openai.api_key = "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"
+openai.api_key = config.oaik
 
 
 def shorten(link):
@@ -21,10 +22,10 @@ def image(params):
     image = response['data'][0]['url']
     return(shorten(image))
 
-def name(descr, name):
+def name(descr, seed):
     response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=f"Product description:{description}Seed words:{seed}\nProduct names:",
+        prompt=f"Product description:{descr}Seed words:{seed}\nProduct names:",
         temperature=0.8,
         max_tokens=60,
         top_p=1.0,
