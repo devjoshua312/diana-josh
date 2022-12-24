@@ -3,7 +3,7 @@ from functions import *
 import os
 
 def authCheck(key):
-	if key in ["hlgisaiod7itygI87ghv6YUFvb8967yrfvbski328s43512c684"]:
+	if key in ["hlgisaiod7itygI87ghv6Yiusguvvb8967yrfvbski328s43512c684"]:
 		return("ok")
 
 app = Flask(__name__)
