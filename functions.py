@@ -3,7 +3,7 @@ import pyshorteners as sh
 import os
 
 try:
-    openai.api_key = os.getenv["openai"]
+    openai.api_key = os.environ.get["OPENAI_API_KEY"]
 except Exception as e:
     print(e)
 
