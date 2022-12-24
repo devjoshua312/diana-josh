@@ -1,10 +1,9 @@
 import openai
 import random
-import config
 import pyshorteners as sh
 
 
-openai.api_key = config.oaik
+openai.api_key = "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"
 
 
 def shorten(link):
