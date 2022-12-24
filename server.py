@@ -2,10 +2,8 @@ from flask import Flask, request
 from functions import *
 import os
 
-client_api = os.environ.get["CLIENT_API_KEY"]
-
 def authCheck(key):
-	if key in client_api:
+	if key in ["hlgisaiod7itygI87ghv6YUFvb8967yrfvbski328s43512c684"]:
 		return("ok")
 
 app = Flask(__name__)
