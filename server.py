@@ -71,7 +71,11 @@ try:
 		else:
 			return(f"incorrect or non-existent api key. please check your url. debug info: Service called: 'horror story gen', key: {topic}")
 except Exception as e:
+<<<<<<< HEAD
 	print(f"{e}")
+=======
+	return(f"{e}")
+>>>>>>> 1ccb8d0e6d1bb0417d52f93dac6510f83e77033b
 	
 	
 if __name__ == "__main__":
