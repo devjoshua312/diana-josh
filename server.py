@@ -2,15 +2,16 @@ from flask import Flask, request
 from functions import *
 
 def authCheck(key):
-	if key in "hlgisaiod7itygI87ghv6YUFvb8967yrfvbski":
+	if key in ["hlgisaiod7itygI87ghv6YUFvb8967yrfvbski"]:
 		return("ok")
 
-
 app = Flask(__name__)
+apiError = "incorrect or non-existent api key. please check your url."
 
 @app.route("/")
 def home():
-	return("Home Page")
+	return("Created by Esvin Joshua.")
+
 
 
 @app.route("/image")
@@ -24,7 +25,7 @@ def image_gen():
 		except Exception as e:
 			return(f"{e}")
 	else:
-		return(f"incorrect or non-existent api key. please check your url. debug info: Service called: 'image', key: {param}")
+		return(apiError)
 
 
 @app.route("/chat")
@@ -38,7 +39,20 @@ def chat_bot():
 		except Exception as e:
 			return(f"{e}")
 	else:
-		return(f"incorrect or non-existent api key. please check your url. debug info: Service called: 'chat', key: {text}")
+		return(apiError)
+
+@app.route("/aichat")
+def aichat():
+	msg = request.args.get("msg")
+	kkey = request.args.get("api_key")
+	if authCheck(kkey) == "ok":
+		try:
+			con = convo(msg)
+			return(con)
+		except Exception as e:
+			return(f"{e}")
+	else:
+		return(apiError)
 
 
 @app.route("/name")
@@ -53,7 +67,7 @@ def name_gen():
 		except Exception as e:
 			return(f"{e}")
 	else:
-		return(f"incorrect or non-existent api key. please check your url. debug info: Service called: 'name generator', key: {desc}, seed: {seed}")
+		return(apiError)
 
 @app.route("/horror")
 def scare():
@@ -66,8 +80,20 @@ def scare():
 		except Exception as e:
 			return(f"{e}")
 	else:
-		return(f"incorrect or non-existent api key. please check your url. debug info: Service called: 'horror story gen', key: {topic}")
+		return(apiError)
 
+@app.route("/recipe")
+def recipee():
+	ingre = request.args.get("ingredients")
+	kkey = request.args.get("api_key")
+	if authCheck(kkey) == "ok":
+		try:
+			recipe(ingre)
+			return(recipe)
+		except Exception as e:
+			return(f"{e}")
+	else:
+		return(apiError)
 
 
 if __name__ == "__main__":

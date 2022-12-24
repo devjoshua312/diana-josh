@@ -1,10 +1,9 @@
 import openai
-import random
 import pyshorteners as sh
+import os
 
 
-openai.api_key = "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"
-
+openai.api_key = os.getenv["openai"]
 
 def shorten(link):
     s = sh.Shortener()
@@ -87,10 +86,10 @@ def friend(text):
     return(response['choices'][0]['text'])
 
 
-def convo():
+def convo(msg):
     response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=f"Human:{text}\nAI:",
+        prompt=f"Human:{msg}\nAI:",
         temperature=0.9,
         max_tokens=150,
         top_p=1,
