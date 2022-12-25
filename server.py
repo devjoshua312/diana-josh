@@ -3,7 +3,7 @@ from functions import *
 import os
 
 def authCheck(key):
-	if key in os.environ.get["MAIN_API_KEY"]:
+	if key in ["hlgisaiod7itygI87ghv6Yiusguvvb89HGtutygsb7856tghjsb67yrfvbski328s43512c684"]:
 		return("ok")
 
 
