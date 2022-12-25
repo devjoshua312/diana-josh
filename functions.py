@@ -4,7 +4,6 @@ import os
 
 openai.api_key = os.environ.get["OPENAI_API_KEY"]
 
-
 def shorten(link):
     s = sh.Shortener()
     tinyurl = s.tinyurl.short(link)
