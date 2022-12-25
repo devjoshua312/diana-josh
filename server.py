@@ -6,6 +6,7 @@ def authCheck(key):
 	if key in os.environ.get["MAIN_API_KEY"]:
 		return("ok")
 
+
 app = Flask(__name__)
 apiError = "incorrect or non-existent api key. please check your url."
 
