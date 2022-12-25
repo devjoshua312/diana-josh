@@ -3,7 +3,7 @@ from functions import *
 import os
 
 def authCheck(key):
-	if key in ["hlgisaiod7itygI87ghv6Yiusguvvb8967yrfvbski328s43512c684"]:
+	if key in os.environ.get["MAIN_API_KEY"]:
 		return("ok")
 
 app = Flask(__name__)
@@ -17,11 +17,11 @@ def home():
 
 @app.route("/image")
 def image_gen():
-	param = request.args.get("param")
+	text = request.args.get("text")
 	kkey = request.args.get("api_key")
 	if authCheck(kkey) == "ok":
 		try:
-			img = image(param)
+			img = image(text)
 			return(img)
 		except Exception as e:
 			return(f"{e}")
@@ -44,11 +44,11 @@ def chat_bot():
 
 @app.route("/aichat")
 def aichat():
-	msg = request.args.get("msg")
+	text = request.args.get("text")
 	kkey = request.args.get("api_key")
 	if authCheck(kkey) == "ok":
 		try:
-			con = convo(msg)
+			con = convo(text)
 			return(con)
 		except Exception as e:
 			return(f"{e}")
@@ -72,11 +72,11 @@ def name_gen():
 
 @app.route("/horror")
 def scare():
-	topic = request.args.get("top")
+	text = request.args.get("text")
 	kkey = request.args.get("api_key")
 	if authCheck(kkey) == "ok":
 		try:
-			story = horror(topic)
+			story = horror(text)
 			return(story)
 		except Exception as e:
 			return(f"{e}")
@@ -85,12 +85,12 @@ def scare():
 
 @app.route("/recipe")
 def recipee():
-	ingre = request.args.get("ingredients")
+	text = request.args.get("text")
 	kkey = request.args.get("api_key")
 	if authCheck(kkey) == "ok":
 		try:
-			recipe(ingre)
-			return(recipe)
+			r = recipe(text)
+			return(r)
 		except Exception as e:
 			return(f"{e}")
 	else:
