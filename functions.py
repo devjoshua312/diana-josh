@@ -2,7 +2,10 @@ import openai
 import pyshorteners as sh
 import os
 
-openai.api_key = os.environ.get["OPENAI_API_KEY"]
+try:
+    openai.api_key = os.environ.get["OPENAI_API_KEY"]
+except Exception as e:
+    print(e)
 
 def shorten(link):
     s = sh.Shortener()
