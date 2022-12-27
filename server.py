@@ -7,7 +7,7 @@ def authCheck(key):
 
 
 app = Flask(__name__)
-apiError = "incorrect or non-existent api key. please check your url."
+apiError = "Client API key incorrect. Please try again."
 
 @app.route("/")
 def home():
