@@ -20,7 +20,7 @@ def image(params):
         size="1024x1024"
     )
     image = response['data'][0]['url']
-    return(shorten(image))
+    return(image)
 
 def name(descr, seed):
     response = openai.Completion.create(
